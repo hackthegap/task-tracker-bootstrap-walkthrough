@@ -1,6 +1,15 @@
-# Getting Started with Create React App
+# Task Tracker: Bootstrap Version Demo
+
+## Installing the dependencies:
+
+```
+npm install react react-dom react-scripts bootstrap react-bootstrap @restart/ui
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+-----
 
 ## Available Scripts
 

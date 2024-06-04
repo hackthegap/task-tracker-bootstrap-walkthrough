@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import AddTaskForm from './components/AddTaskForm';
+import TaskList from './components/TaskList';
+import { Container, Row, Col } from 'react-bootstrap';
 import './App.css';
-//
-function App() {
+
+const App = () => {
+
+  const [tasks, setTasks] = useState([]);
+  const addTask = (task) => {
+  const newTask = { ...task, id: tasks.length + 1 };
+    setTasks([...tasks, newTask]);
+  };
+
+  const removeTask = (id) => {
+    setTasks(tasks.filter(task => task.id !== id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Container>
+      <Row>
+        <Col xs={12} md={6} className="my-4">
+          <h1 className="text-center">Task Tracker</h1>
+          <AddTaskForm addTask={addTask} />
+        </Col>
+        <Col xs={12} md={6} className="my-4">
+          <h2 className="text-center">Tasks</h2>
+          <TaskList tasks={tasks} removeTask={removeTask} />
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default App;
